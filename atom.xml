@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blkraven.github.io/"/>
-  <updated>2017-06-26T13:28:07.595Z</updated>
+  <updated>2017-06-27T09:08:05.820Z</updated>
   <id>https://blkraven.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>操作系统学习（1）</title>
-    <link href="https://blkraven.github.io/2017/06/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/"/>
-    <id>https://blkraven.github.io/2017/06/26/操作系统学习（1）/</id>
-    <published>2017-06-26T12:52:01.000Z</published>
-    <updated>2017-06-26T13:28:07.595Z</updated>
+    <title>ucore lab1 bootloader学习</title>
+    <link href="https://blkraven.github.io/2017/06/27/ucore-lab1-bootloader%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://blkraven.github.io/2017/06/27/ucore-lab1-bootloader学习/</id>
+    <published>2017-06-27T09:08:05.000Z</published>
+    <updated>2017-06-27T09:08:05.820Z</updated>
     
     <summary type="html">
     
@@ -32,30 +32,106 @@
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://blkraven.github.io/2017/06/26/hello-world/"/>
-    <id>https://blkraven.github.io/2017/06/26/hello-world/</id>
-    <published>2017-06-26T02:11:34.401Z</published>
-    <updated>2017-06-26T08:09:35.013Z</updated>
+    <title>ucore os学习（1）</title>
+    <link href="https://blkraven.github.io/2017/06/26/ucore%20os%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/"/>
+    <id>https://blkraven.github.io/2017/06/26/ucore os学习（1）/</id>
+    <published>2017-06-26T12:52:01.000Z</published>
+    <updated>2017-06-27T09:48:23.448Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><a id="more"></a>
-<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>学习ucore操作系统课程。</p>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>x86启动顺序，寄存器初始值 实模式 -&gt;保护模式</p>
+<blockquote>
+<ul>
+<li>CS = F000H, EIP = 0000FFF0H</li>
+<li>Base + EIP = FFFF0000H + 0000FFF0H bios的EPROM</li>
+<li>通常第一条指令是一条长跳转指令</li>
+<li>加载主引导扇区(MBR)的512字节到内存的0x7c00,然后跳转执行</li>
+<li>bios能力有限<a id="more"></a>
+</li>
+</ul>
+</blockquote>
+<h3 id="bootloader到OS"><a href="#bootloader到OS" class="headerlink" title="bootloader到OS"></a>bootloader到OS</h3><blockquote>
+<ul>
+<li>使能保护模式（protection mode) &amp; 段机制（segment-level protection）</li>
+<li>从硬盘读取kernel in ELF格式的ucore kernel，并放到内存中固定位置</li>
+<li>跳转到ucore os的入口点（entry point）执行</li>
+</ul>
+</blockquote>
+<h3 id="段机制GDT-全局段表-，通过寄存器GDTR保存"><a href="#段机制GDT-全局段表-，通过寄存器GDTR保存" class="headerlink" title="段机制GDT(全局段表)，通过寄存器GDTR保存"></a>段机制<a href="https://en.wikipedia.org/wiki/Global_Descriptor_Table" target="_blank" rel="external"><em><code>GDT</code></em></a>(全局段表)，通过寄存器<code>GDTR</code>保存</h3><p>使能保护模式（protection mode)，bootloader/OS要设置CR0的bit0</p>
+<p><a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank" rel="external"><code>ELF</code></a>文件的文件头结构<code>elfhdr</code></p>
+<h3 id="C函数调用的实现"><a href="#C函数调用的实现" class="headerlink" title="C函数调用的实现"></a>C函数调用的实现</h3><blockquote>
+<ul>
+<li>参数的压栈（也可以通过寄存器传参）</li>
+<li>返回地址的压栈</li>
+<li>ebp的压栈          , push ebp</li>
+<li>设置当前ebp为ESP的值， mov ebp, esp</li>
+<li>按相反反向返回设置<br>如下图，DrawLine正在运行，被DrawSquare调用<br><img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Call_stack_layout.svg" alt="栈调用示意图"></li>
+</ul>
+</blockquote>
+<h3 id="CC内联汇编（inline-assembly"><a href="#CC内联汇编（inline-assembly" class="headerlink" title="CC内联汇编（inline assembly)"></a>CC内联汇编（inline assembly)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">asm(assembler template</div><div class="line">  : output operands   (optional)</div><div class="line">  : input operands    (optional)</div><div class="line">  : clobbers          (optional)</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>示例如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">uint32_t cr0;</div><div class="line">asm volatile ("movl %%cr0, %0\n":"=r"(cr0)); // 把cr0寄存器的值赋值到变量cr0</div><div class="line">cr0 |= 0x80000000; // cr0的最高位置1</div><div class="line">asm volatile ("movl %0, %%cr0\n"::"r"(cr0)); // 从变量cr0中读回寄存器cr0</div></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>volatile<br>No reordering; No elimination</li>
+<li>%0<br>The first constraint following</li>
+<li>r<br>A constraint; GCC is free to use any register<blockquote>
+<ul>
+<li>a,b,c,d,S,D 分别代表 eax,ebx,ecx,edx,esi,edi 寄存器</li>
+<li>r 上面的寄存器的任意一个（谁闲着就用谁）</li>
+<li>m 内存</li>
+<li>i 立即数（常量，只用于输入操作数）</li>
+<li>g 寄存器、内存、立即数 都行（gcc你看着办）</li>
+<li>0 使用相同的寄存器 same as the first</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h3 id="x86的中断处理"><a href="#x86的中断处理" class="headerlink" title="x86的中断处理"></a>x86的中断处理</h3><p>中断源</p>
+<blockquote>
+<ul>
+<li>中断 Interrupts, 外部中断，软件产生的中断，The INT n指令</li>
+</ul>
+<ul>
+<li>异常 Exceptions，程序错误， 软件产生的异常，机器检查的异常</li>
+</ul>
+</blockquote>
+<p>确定中断服务例程(Interrupt Service Routine)<br>中断号标识中断与异常，在中断描述符表(Interrupt Descriptor Table, <a href="https://en.wikipedia.org/wiki/Interrupt_descriptor_table" target="_blank" rel="external"><em><code>IDT</code></em></a>), 其实地址和大小保存在中断描述符表寄存器<code>IDTR</code>中。</p>
+<p>iret vs. ret vs. retf</p>
+<blockquote>
+<ul>
+<li>iret: 弹出EFLAGS和SS/ESP</li>
+<li>ret: 弹出EIP</li>
+<li>retf: 弹出CS和EIP</li>
+</ul>
+</blockquote>
+<p>用户程序通过系统调用访问OS内核服务</p>
+<blockquote>
+<ul>
+<li>需要指定中断号</li>
+<li>使用Trap, 也称Software generated interrupt</li>
+<li>或使用特殊指令(SYSENTER/SYSEXIT)</li>
+</ul>
+</blockquote>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;
+      &lt;p&gt;学习ucore操作系统课程。&lt;/p&gt;
+&lt;h3 id=&quot;启动&quot;&gt;&lt;a href=&quot;#启动&quot; class=&quot;headerlink&quot; title=&quot;启动&quot;&gt;&lt;/a&gt;启动&lt;/h3&gt;&lt;p&gt;x86启动顺序，寄存器初始值 实模式 -&amp;gt;保护模式&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;CS = F000H, EIP = 0000FFF0H&lt;/li&gt;
+&lt;li&gt;Base + EIP = FFFF0000H + 0000FFF0H bios的EPROM&lt;/li&gt;
+&lt;li&gt;通常第一条指令是一条长跳转指令&lt;/li&gt;
+&lt;li&gt;加载主引导扇区(MBR)的512字节到内存的0x7c00,然后跳转执行&lt;/li&gt;
+&lt;li&gt;bios能力有限&lt;/li&gt;&lt;/ul&gt;&lt;/blockquote&gt;
     
     </summary>
     
+      <category term="学习" scheme="https://blkraven.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="ucore os" scheme="https://blkraven.github.io/tags/ucore-os/"/>
     
   </entry>
   

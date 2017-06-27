@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[操作系统学习（1）]]></title>
-    <url>%2F2017%2F06%2F26%2F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89%2F</url>
+    <title><![CDATA[ucore lab1 bootloader学习]]></title>
+    <url>%2F2017%2F06%2F27%2Fucore-lab1-bootloader%E5%AD%A6%E4%B9%A0%2F</url>
     <content type="text"></content>
       <categories>
         <category>学习</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F06%2F26%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick Start Create a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[ucore os学习（1）]]></title>
+    <url>%2F2017%2F06%2F26%2Fucore%20os%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[学习ucore操作系统课程。 启动x86启动顺序，寄存器初始值 实模式 -&gt;保护模式 CS = F000H, EIP = 0000FFF0H Base + EIP = FFFF0000H + 0000FFF0H bios的EPROM 通常第一条指令是一条长跳转指令 加载主引导扇区(MBR)的512字节到内存的0x7c00,然后跳转执行 bios能力有限 bootloader到OS 使能保护模式（protection mode) &amp; 段机制（segment-level protection） 从硬盘读取kernel in ELF格式的ucore kernel，并放到内存中固定位置 跳转到ucore os的入口点（entry point）执行 段机制GDT(全局段表)，通过寄存器GDTR保存使能保护模式（protection mode)，bootloader/OS要设置CR0的bit0 ELF文件的文件头结构elfhdr C函数调用的实现 参数的压栈（也可以通过寄存器传参） 返回地址的压栈 ebp的压栈 , push ebp 设置当前ebp为ESP的值， mov ebp, esp 按相反反向返回设置如下图，DrawLine正在运行，被DrawSquare调用 CC内联汇编（inline assembly)12345asm(assembler template : output operands (optional) : input operands (optional) : clobbers (optional)); 示例如下：1234uint32_t cr0;asm volatile ("movl %%cr0, %0\n":"=r"(cr0)); // 把cr0寄存器的值赋值到变量cr0cr0 |= 0x80000000; // cr0的最高位置1asm volatile ("movl %0, %%cr0\n"::"r"(cr0)); // 从变量cr0中读回寄存器cr0 volatileNo reordering; No elimination %0The first constraint following rA constraint; GCC is free to use any register a,b,c,d,S,D 分别代表 eax,ebx,ecx,edx,esi,edi 寄存器 r 上面的寄存器的任意一个（谁闲着就用谁） m 内存 i 立即数（常量，只用于输入操作数） g 寄存器、内存、立即数 都行（gcc你看着办） 0 使用相同的寄存器 same as the first x86的中断处理中断源 中断 Interrupts, 外部中断，软件产生的中断，The INT n指令 异常 Exceptions，程序错误， 软件产生的异常，机器检查的异常 确定中断服务例程(Interrupt Service Routine)中断号标识中断与异常，在中断描述符表(Interrupt Descriptor Table, IDT), 其实地址和大小保存在中断描述符表寄存器IDTR中。 iret vs. ret vs. retf iret: 弹出EFLAGS和SS/ESP ret: 弹出EIP retf: 弹出CS和EIP 用户程序通过系统调用访问OS内核服务 需要指定中断号 使用Trap, 也称Software generated interrupt 或使用特殊指令(SYSENTER/SYSEXIT)]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>ucore os</tag>
+      </tags>
   </entry>
 </search>

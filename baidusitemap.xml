@@ -4,12 +4,32 @@
 
     
   <url>
-    <loc>https://blkraven.github.io/2017/06/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/</loc>
-    <lastmod>2017-06-26T13:28:07.595Z</lastmod>
+    <loc>https://blkraven.github.io/2017/06/26/ucore%20os%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/</loc>
+    <lastmod>2017-06-27T09:48:23.448Z</lastmod>
     <data>
         <display>
-        <title>操作系统学习（1）</title>
+        <title>ucore os学习（1）</title>
         <pubTime>2017-06-26T12:52:01.000Z</pubTime>
+        
+        <tag>ucore os</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习" url="https://blkraven.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blkraven.github.io/2017/06/27/ucore-lab1-bootloader%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2017-06-27T09:08:05.820Z</lastmod>
+    <data>
+        <display>
+        <title>ucore lab1 bootloader学习</title>
+        <pubTime>2017-06-27T09:08:05.000Z</pubTime>
         
          
            
@@ -24,19 +44,4 @@
     
     
     
-    
-  <url>
-    <loc>https://blkraven.github.io/2017/06/26/hello-world/</loc>
-    <lastmod>2017-06-26T08:09:35.013Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2017-06-26T02:11:34.401Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
 </urlset>

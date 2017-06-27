@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="BlkRaven, 学习, 安全">
+  <meta name="keywords" content="ucore os,">
 
 
 
@@ -95,15 +95,19 @@
 
 
 
-<meta name="description" content="个人的学习和记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="BlkRaven的个人博客">
-<meta property="og:url" content="https://blkraven.github.io/archives/2017/06/index.html">
+<meta name="description" content="学习ucore操作系统课程。 启动x86启动顺序，寄存器初始值 实模式 -&amp;gt;保护模式   CS = F000H, EIP = 0000FFF0H Base + EIP = FFFF0000H + 0000FFF0H bios的EPROM 通常第一条指令是一条长跳转指令 加载主引导扇区(MBR)的512字节到内存的0x7c00,然后跳转执行 bios能力有限">
+<meta name="keywords" content="ucore os">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ucore os学习（1）">
+<meta property="og:url" content="https://blkraven.github.io/2017/06/26/ucore os学习（1）/index.html">
 <meta property="og:site_name" content="BlkRaven的个人博客">
-<meta property="og:description" content="个人的学习和记录">
+<meta property="og:description" content="学习ucore操作系统课程。 启动x86启动顺序，寄存器初始值 实模式 -&amp;gt;保护模式   CS = F000H, EIP = 0000FFF0H Base + EIP = FFFF0000H + 0000FFF0H bios的EPROM 通常第一条指令是一条长跳转指令 加载主引导扇区(MBR)的512字节到内存的0x7c00,然后跳转执行 bios能力有限">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/d/d3/Call_stack_layout.svg">
+<meta property="og:updated_time" content="2017-06-27T09:48:23.448Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BlkRaven的个人博客">
-<meta name="twitter:description" content="个人的学习和记录">
+<meta name="twitter:title" content="ucore os学习（1）">
+<meta name="twitter:description" content="学习ucore操作系统课程。 启动x86启动顺序，寄存器初始值 实模式 -&amp;gt;保护模式   CS = F000H, EIP = 0000FFF0H Base + EIP = FFFF0000H + 0000FFF0H bios的EPROM 通常第一条指令是一条长跳转指令 加载主引导扇区(MBR)的512字节到内存的0x7c00,然后跳转执行 bios能力有限">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/d/d3/Call_stack_layout.svg">
 
 
 
@@ -131,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://blkraven.github.io/archives/2017/06/">
+  <link rel="canonical" href="https://blkraven.github.io/2017/06/26/ucore os学习（1）/">
 
 
 
 
 
-  <title>归档 | BlkRaven的个人博客</title>
+  <title>ucore os学习（1） | BlkRaven的个人博客</title>
   
 
 
@@ -162,7 +166,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -298,99 +302,297 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 2 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/27/ucore-lab1-bootloader学习/" itemprop="url">
-              
-                <span itemprop="name">ucore lab1 bootloader学习</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-06-27T17:08:05+08:00" content="2017-06-27">
-          06-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/26/ucore os学习（1）/" itemprop="url">
-              
-                <span itemprop="name">ucore os学习（1）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-06-26T20:52:01+08:00" content="2017-06-26">
-          06-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://blkraven.github.io/2017/06/26/ucore os学习（1）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="BlkRaven">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BlkRaven的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ucore os学习（1）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-26T20:52:01+08:00">
+                2017-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/26/ucore os学习（1）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/26/ucore os学习（1）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习ucore操作系统课程。</p>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>x86启动顺序，寄存器初始值 实模式 -&gt;保护模式</p>
+<blockquote>
+<ul>
+<li>CS = F000H, EIP = 0000FFF0H</li>
+<li>Base + EIP = FFFF0000H + 0000FFF0H bios的EPROM</li>
+<li>通常第一条指令是一条长跳转指令</li>
+<li>加载主引导扇区(MBR)的512字节到内存的0x7c00,然后跳转执行</li>
+<li>bios能力有限<a id="more"></a>
+</li>
+</ul>
+</blockquote>
+<h3 id="bootloader到OS"><a href="#bootloader到OS" class="headerlink" title="bootloader到OS"></a>bootloader到OS</h3><blockquote>
+<ul>
+<li>使能保护模式（protection mode) &amp; 段机制（segment-level protection）</li>
+<li>从硬盘读取kernel in ELF格式的ucore kernel，并放到内存中固定位置</li>
+<li>跳转到ucore os的入口点（entry point）执行</li>
+</ul>
+</blockquote>
+<h3 id="段机制GDT-全局段表-，通过寄存器GDTR保存"><a href="#段机制GDT-全局段表-，通过寄存器GDTR保存" class="headerlink" title="段机制GDT(全局段表)，通过寄存器GDTR保存"></a>段机制<a href="https://en.wikipedia.org/wiki/Global_Descriptor_Table" target="_blank" rel="external"><em><code>GDT</code></em></a>(全局段表)，通过寄存器<code>GDTR</code>保存</h3><p>使能保护模式（protection mode)，bootloader/OS要设置CR0的bit0</p>
+<p><a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank" rel="external"><code>ELF</code></a>文件的文件头结构<code>elfhdr</code></p>
+<h3 id="C函数调用的实现"><a href="#C函数调用的实现" class="headerlink" title="C函数调用的实现"></a>C函数调用的实现</h3><blockquote>
+<ul>
+<li>参数的压栈（也可以通过寄存器传参）</li>
+<li>返回地址的压栈</li>
+<li>ebp的压栈          , push ebp</li>
+<li>设置当前ebp为ESP的值， mov ebp, esp</li>
+<li>按相反反向返回设置<br>如下图，DrawLine正在运行，被DrawSquare调用<br><img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Call_stack_layout.svg" alt="栈调用示意图"></li>
+</ul>
+</blockquote>
+<h3 id="CC内联汇编（inline-assembly"><a href="#CC内联汇编（inline-assembly" class="headerlink" title="CC内联汇编（inline assembly)"></a>CC内联汇编（inline assembly)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">asm(assembler template</div><div class="line">  : output operands   (optional)</div><div class="line">  : input operands    (optional)</div><div class="line">  : clobbers          (optional)</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>示例如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">uint32_t cr0;</div><div class="line">asm volatile ("movl %%cr0, %0\n":"=r"(cr0)); // 把cr0寄存器的值赋值到变量cr0</div><div class="line">cr0 |= 0x80000000; // cr0的最高位置1</div><div class="line">asm volatile ("movl %0, %%cr0\n"::"r"(cr0)); // 从变量cr0中读回寄存器cr0</div></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>volatile<br>No reordering; No elimination</li>
+<li>%0<br>The first constraint following</li>
+<li>r<br>A constraint; GCC is free to use any register<blockquote>
+<ul>
+<li>a,b,c,d,S,D 分别代表 eax,ebx,ecx,edx,esi,edi 寄存器</li>
+<li>r 上面的寄存器的任意一个（谁闲着就用谁）</li>
+<li>m 内存</li>
+<li>i 立即数（常量，只用于输入操作数）</li>
+<li>g 寄存器、内存、立即数 都行（gcc你看着办）</li>
+<li>0 使用相同的寄存器 same as the first</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h3 id="x86的中断处理"><a href="#x86的中断处理" class="headerlink" title="x86的中断处理"></a>x86的中断处理</h3><p>中断源</p>
+<blockquote>
+<ul>
+<li>中断 Interrupts, 外部中断，软件产生的中断，The INT n指令</li>
+</ul>
+<ul>
+<li>异常 Exceptions，程序错误， 软件产生的异常，机器检查的异常</li>
+</ul>
+</blockquote>
+<p>确定中断服务例程(Interrupt Service Routine)<br>中断号标识中断与异常，在中断描述符表(Interrupt Descriptor Table, <a href="https://en.wikipedia.org/wiki/Interrupt_descriptor_table" target="_blank" rel="external"><em><code>IDT</code></em></a>), 其实地址和大小保存在中断描述符表寄存器<code>IDTR</code>中。</p>
+<p>iret vs. ret vs. retf</p>
+<blockquote>
+<ul>
+<li>iret: 弹出EFLAGS和SS/ESP</li>
+<li>ret: 弹出EIP</li>
+<li>retf: 弹出CS和EIP</li>
+</ul>
+</blockquote>
+<p>用户程序通过系统调用访问OS内核服务</p>
+<blockquote>
+<ul>
+<li>需要指定中断号</li>
+<li>使用Trap, 也称Software generated interrupt</li>
+<li>或使用特殊指令(SYSENTER/SYSEXIT)</li>
+</ul>
+</blockquote>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wchect_qrcode.png" alt="BlkRaven WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ucore-os/" rel="tag"># ucore os</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/27/ucore-lab1-bootloader学习/" rel="prev" title="ucore lab1 bootloader学习">
+                ucore lab1 bootloader学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -398,6 +600,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -417,8 +630,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="BlkRaven">
           <p class="site-author-name" itemprop="name">BlkRaven</p>
@@ -514,6 +736,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动"><span class="nav-number">1.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bootloader到OS"><span class="nav-number">2.</span> <span class="nav-text">bootloader到OS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#段机制GDT-全局段表-，通过寄存器GDTR保存"><span class="nav-number">3.</span> <span class="nav-text">段机制GDT(全局段表)，通过寄存器GDTR保存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C函数调用的实现"><span class="nav-number">4.</span> <span class="nav-text">C函数调用的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CC内联汇编（inline-assembly"><span class="nav-number">5.</span> <span class="nav-text">CC内联汇编（inline assembly)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#x86的中断处理"><span class="nav-number">6.</span> <span class="nav-text">x86的中断处理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -647,11 +885,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
 
 
   
@@ -670,6 +906,18 @@
       <script id="dsq-count-scr" src="https://https-blkraven-github-io.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://blkraven.github.io/2017/06/26/ucore os学习（1）/';
+          this.page.identifier = '2017/06/26/ucore os学习（1）/';
+          this.page.title = 'ucore os学习（1）';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-blkraven-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
